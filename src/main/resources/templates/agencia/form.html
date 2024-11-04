@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:if="${agencia.id == null}">Adicionar Livro</title>
+    <title th:if="${agencia.id != null}">Editar Livro</title>
+</head>
+<body>
+<h1 th:if="${agencia.id == null}">Adicionar agencia</h1>
+<h1 th:if="${agencia.id != null}">Editar agencia</h1>
+
+<form th:action="@{/agencias/salvar}" th:object="${agencia}" method="post">
+    <input type="hidden" th:field="*{id}" /> <!-- Campo oculto para o ID -->
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required />
+    </div>
+
+    <div>
+        <button type="submit">Salvar</button>
+    </div>
+</form>
+
+
+<a th:href="@{/agencias}">Voltar à lista</a>
+</body>
+</html>

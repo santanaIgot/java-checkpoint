@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Livros</title>
+</head>
+<body>
+<h1>Lista de Agencias</h1>
+
+<a th:href="@{/agencias/novo}">Adicionar Novo Agencia</a>
+<a th:href="@{/agencias/pesquisa}">Pesquisar Agencia</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="agencia : ${agencia}">
+        <td th:text="${agencia.nome}">Nome</td>
+        <td>
+            <a th:href="@{/agencias/editar/{id}(id=${agencia.id})}">Editar</a>
+            <form th:action="@{/agencias/deletar/{id}(id=${agencia.id})}" method="post" onsubmit="return confirm('Tem certeza que deseja remover?');" style="display:inline;">
+                <button type="submit">Deletar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
