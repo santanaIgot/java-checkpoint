@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Agencia {
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_agencia")
     private Long id;
     @Column(name = "nm_nome")

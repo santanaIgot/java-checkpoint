@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:if="${agencia.id == null}">Adicionar Livro</title>
-    <title th:if="${agencia.id != null}">Editar Livro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:if="${agencia.id == null}">Adicionar Agência</title>
+    <title th:if="${agencia.id != null}">Editar Agência</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<h1 th:if="${agencia.id == null}">Adicionar agencia</h1>
-<h1 th:if="${agencia.id != null}">Editar agencia</h1>
 
-<form th:action="@{/agencias/salvar}" th:object="${agencia}" method="post">
-    <input type="hidden" th:field="*{id}" /> <!-- Campo oculto para o ID -->
-    <div>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" th:field="*{nome}" required />
-    </div>
+<div class="container mt-5">
+    <h1 th:if="${agencia.id == null}">Adicionar Agência</h1>
+    <h1 th:if="${agencia.id != null}">Editar Agência</h1>
 
-    <div>
-        <button type="submit">Salvar</button>
-    </div>
-</form>
+    <form th:action="@{/agencias/salvar}" th:object="${agencia}" method="post" class="bg-light p-4 border rounded shadow">
+        <input type="hidden" th:field="*{id}" /> <!-- Campo oculto para o ID -->
 
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" class="form-control" required />
+        </div>
 
-<a th:href="@{/agencias}">Voltar à lista</a>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+
+    <a th:href="@{/agencias}" class="btn btn-secondary">Voltar à lista</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

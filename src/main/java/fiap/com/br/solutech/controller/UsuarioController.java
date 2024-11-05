@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -37,7 +38,7 @@ public class UsuarioController {
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("userForm") UserForm userForm) {
         userService.saveUser(userForm.getUsername(),
-                passwordEncoder.encode(userForm.getPassword()), (List<String>) userForm.getRoles());
+                passwordEncoder.encode(userForm.getPassword()), new ArrayList<>(userForm.getRoles()));
         return "redirect:/login";
     }
 

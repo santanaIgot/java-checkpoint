@@ -9,7 +9,7 @@
 <body>
 <div class="container mt-5">
     <h2>Cadastrar Investimento</h2>
-    <form th:action="@{/investimentos}" th:object="${investimento}" method="post">
+    <form th:action="@{/investimentos/novo}" th:object="${investimento}" method="post">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" id="nome" th:field="*{nome}" required>
@@ -31,7 +31,7 @@
             <select class="form-control" id="agencia" th:field="*{agencia}" required>
                 <option value="" disabled selected>Selecione uma agência</option>
                 <option th:each="agencia : ${agencias}"
-                        th:value="${agencia}"
+                        th:value="${agencia.id}"
                         th:text="${agencia.nome}"> <!-- Mostra o nome da agência -->
                 </option>
             </select>

@@ -21,7 +21,7 @@ public class Investimento {
 
     private Double valor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_agency", nullable = false)
     private Agencia agencia;
 }
